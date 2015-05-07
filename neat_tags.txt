@@ -1,0 +1,161 @@
+neat_tag,column_name,units
+c(Hb),cHb,
+
+#Diagnostics
+#===========
+
+#Low ionisation densities
+#-----------
+
+[OII] density,nOII,cm**-3
+[SII] density,nSII,cm**-3
+Low ionisation density,nLow,cm**-3
+
+#Low ionisation temperatures
+#-----------
+
+[OII] temperature,tOII,K
+[SII] temperature,tSII,K
+[NII] temperature,tNII,K
+[OI] temperature,tOI,K
+[CI] temperature,tCI,K
+Low ionisation temperature,tLow,K
+
+#Medium ionisation densities
+#-----------
+
+[ClIII] density,nClIII,cm**-3
+[ArIV] density,nArIV,cm**-3
+[CIII] density,nCIII,cm**-3
+Medium ionisation density,nMed,cm**-3
+
+[OIII] temperature,TOIII,K
+[NeIII] temperature,TNeIII,K
+[ArIII] temperature,tArIII,K
+[SIII] temperature,tSIII,K
+Medium ionisation temperature,tMed,K
+
+#High ionisation densities
+#-----------
+
+# [NeIV] density                    
+# High ionisation density           
+
+#High ionisation temperatures
+#-----------
+
+# [ArV] temperature                 
+# Ratio                             
+# [NeV] temperature                 
+# Ratio                             
+# High temperature                  
+
+#Balmer jump temperature
+#-----------
+
+BJ temperature,tBJ,K
+
+#CEL abundances
+#==============
+
+C0/H,C0abund_CEL,
+C+/H,C+abund_CEL,
+C2+/H,C2+abund_CEL,
+C3+/H,C3+abund_CEL,
+icf(C),icf_C_CEL,
+C/H,C_abund_CEL,
+N+/H,N+abund_CEL,
+N2+/H,N2+abund_CEL,
+N3+/H,N3+abund_CEL,
+N4+/H,N4+abund_CEL,
+icf(N),icf_N_CEL,
+N/H,N_abund_CEL,
+O0/H,O0abund_CEL,
+O+/H,O+abund_CEL,
+O2+/H,O2+abund_CEL,
+O3+/H,O3+abund_CEL,
+icf(O),icf_O_CEL,
+O/H,O_abund_CEL,
+Ne+/H,Ne+abund_CEL,
+Ne2+/H,Ne2+abund_CEL,
+Ne3+/H,Ne3+abund_CEL,
+Ne4+/H,Ne4+abund_CEL,
+icf(Ne),icf_Ne_CEL,
+Ne/H,Ne_abund_CEL,
+Ar2+/H,Ar2+abund_CEL,
+Ar3+/H,Ar3+abund_CEL,
+Ar4+/H,Ar4+abund_CEL,
+icf(Ar),icf_Ar_CEL,
+Ar/H,Ar_abund_CEL,
+S+/H,S+abund_CEL,
+S2+/H,S2+abund_CEL,
+icf(S),icf_S_CEL,
+S/H,S_abund_CEL,
+Cl2+/H,Cl2+abund_CEL,
+icf(Cl),icf_Cl_CEL,
+Cl/H,Cl_abund_CEL,
+
+#ORL abundances
+#==============
+
+He+/H,He+abund_ORL,
+He2+/H,He2+abund_ORL,
+He/H,He_abund_ORL,
+
+C2+/H,C2+abund_ORL,
+C3+/H,C3+abund_ORL,
+icf(C),icf_C_ORL,
+C/H,C_abund_ORL,
+
+N2+/H (V3),N2+abund_V3_ORL,
+N2+/H (V5),N2+abund_V5_ORL,
+N2+/H (V8),N2+abund_V8_ORL,
+N2+/H (V12),N2+abund_V12_ORL,
+N2+/H (V20),N2+abund_V20_ORL,
+N2+/H (V28),N2+abund_V28_ORL,
+N2+/H (3d-4f),N2+abund_3d_4f_ORL,
+N2+/H,N2+abund_ORL,
+N3+/H,N3+abund_ORL,
+icf(N),icf_N_ORL,
+N/H,N_abund_ORL,
+
+
+O2+/H (V1),O2+abund_V1_ORL,
+O2+/H (V2),O2+abund_V2_ORL,
+O2+/H (V5),O2+abund_V5_ORL,
+O2+/H (V10),O2+abund_V10_ORL,
+O2+/H (V11),O2+abund_V11_ORL,
+O2+/H (V12),O2+abund_V12_ORL,
+O2+/H (V19),O2+abund_V19_ORL,
+O2+/H (V20),O2+abund_V20_ORL,
+O2+/H (V25),O2+abund_V25_ORL,
+O2+/H (V28),O2+abund_V28_ORL,
+O2+/H (V33),O2+abund_V33_ORL,
+O2+/H (3d-4f),O2+abund_3d_4f_ORL,
+O2+/H,O2+abund_ORL,
+icf(O),icf_O_ORL,
+O/H,O_abund_ORL,
+
+Ne2+/H,Ne2+abund_ORL,
+icf(Ne),icf_Ne_ORL,
+Ne/H,Ne_abund_ORL,
+
+#Strong line abundances
+#======================
+
+O/H (R23 upper),O_abund_R23_upper,
+O/H (R23 lower),O_abund_R23_lower,
+O/H (N2),O_abund_N2,
+O/H (O3N2),O_abund_O3N2,
+O/H (Ar3O3),O_abund_Ar3O3,
+O/H (S3O3),O_abund_S3O3,
+
+#Abundance discrepancy factors
+#=============================
+
+adf (O2+/H),adf_O2+,
+adf (O/H),adf_O,
+adf (N2+/H),adf_N2+,
+adf (N/H),adf_N,
+adf (C2+/H),adf_C2+,
+adf (C/H),adf_Cm,
