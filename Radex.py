@@ -57,9 +57,10 @@ def RunRadex(Molecule = 'hco+',
              ColumnDensity = 1e13, LineWidth = 1.0):
     
 # Set location of radex binary
-    RadexBinary = '/Users/erosolo/snc/astro/m33/jcmt/radex/bin/radex'
+#    RadexBinary = '/Users/snc/astro/m33/jcmt/radex/bin/radex'
+    RadexBinary = os.getenv("HOME")+'/astro/radex/bin/radex'
 # TempName = os.tmpnam()
-    dirname = './RadexRun'+str(random.getrandbits(32))
+    dirname = '/var/tmp/RadexRun'+str(random.getrandbits(32))
     os.mkdir(dirname)
     InputFileName = dirname+'/radex.inp'
     OutputFileName = dirname+'/radex.out'
@@ -74,7 +75,7 @@ def RunRadex(Molecule = 'hco+',
                LineWidth = LineWidth)
     InputFile = open(InputFileName,'r')
     OutputLog = open(dirname+'/radex.log','w')
-    ExitCode = subprocess.call([RadexBinary],stdin = InputFile,stdout = OutputLog)
+    ExitCode = subprocess.call(RadexBinary,stdin = InputFile,stdout = OutputLog)
     InputFile.close()
     OutputLog.close()
 
