@@ -2,12 +2,15 @@ import sys
 import numpy as np
 from astropy.table import Table, Column
 import csv
-
+import os.path as path
+import re
 filelist = sys.argv[1:]
-names = ()
-dtypes = ()
-units = ()
-with open('neat_tags.txt', 'rb') as csvfile:
+scriptloc = sys.argv[0]
+tagloc = scriptloc.replace('neatparser.py','neat_tags.txt')
+names = ('MaskName','ObsDate','Slit','Object','DBKey')
+dtypes = ('S10','S10','S10','S10','S40')
+units = (None,None,None,None,None)
+with open(tagloc, 'rb') as csvfile:
         reader = csv.DictReader(csvfile)
         dix = []
         for row in reader:
@@ -30,6 +33,17 @@ for thisfile in filelist:
     f.close()
     t.add_row()
     method='NONE'
+    splitpath = path.abspath(thisfile).split('/')
+    splitname = re.split(r'(_|\.)',thisfile)[::2]
+    t['MaskName'][-1] = splitpath[-2]
+    t['ObsDate'][-1] = splitpath[-3]
+    t['Slit'][-1] = splitname[1]
+    t['Object'][-1] = splitname[2]
+    t['DBKey'][-1] = t['MaskName'][-1]+'-'+\
+	t['ObsDate'][-1]+'-'+\
+	t['Slit'][-1]+'-'+\
+	t['Object'][-1]
+
     for idx,thisline in enumerate(lines):
         if 'ORL' in thisline:
             method = 'ORL'
@@ -45,10 +59,15 @@ for thisfile in filelist:
 #                try:
                     if len(substrs)>3:
                         start = len(substrs)-3
-                        values = np.array(substrs[start:],dtype='float')
-                        t[row['column_name']][-1] = values[0]
-                        t[row['column_name']+'+err'][-1] = values[1]
-                        t[row['column_name']+'-err'][-1] = values[2]
+			try:
+				values = np.array(substrs[start:],dtype='float')
+				t[row['column_name']][-1] = values[0]
+				t[row['column_name']+'+err'][-1] = values[1]
+				t[row['column_name']+'-err'][-1] = values[2]
+			except ValueError:
+				t[row['column_name']][-1] = 0.0
+				t[row['column_name']+'+err'][-1] = 0.0
+				t[row['column_name']+'-err'][-1] = 0.0
                         if 'Warning' in lines[idx-1]:
                             t[row['column_name']+'_flag'][-1] = 'W'
 t.write('neat_table.fits',overwrite=True)
