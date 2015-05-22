@@ -45,6 +45,7 @@ for thisfile in filelist:
     for idx,thisline in enumerate(textlines):
 	    values = np.array(thisline.split(' '),dtype='float')
 	    index = np.where(np.abs(linelist['wavelength']-values[0])<0.5)
+	    print(thisline,index)
 	    if index:
 		    index = index[0]
 		    t[linelist['line_name'][index][0]][-1] = values[1]
