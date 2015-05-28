@@ -20,7 +20,7 @@ def logprob(p,x,y,x_err,y_err):
     theta,b = p[0],p[1]
     if np.abs(theta-np.pi/4)>np.pi/4:
         return -np.inf
-    Delta = (np.cos(theta)*y - np.sin(theta)*x)**2-b*np.cos(theta)
+    Delta = (np.cos(theta)*y - np.sin(theta)*x-b*np.cos(theta))**2
     Sigma = (np.sin(theta))**2*x_err**2+(np.cos(theta))**2*y_err**2
     lp = -0.5*np.nansum(Delta/Sigma)-0.5*np.nansum(np.log(Sigma))
 
