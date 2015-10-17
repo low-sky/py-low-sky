@@ -41,12 +41,12 @@ def pyhastrom(WarpHDU, TemplateHDU, anchors = 5, order = 2):
     # Put WCS coordinates into place in the new image
     WarpWCS = wcs.WCS(WarpHDU.header)
     TemplateWCS = wcs.WCS(TemplateHDU.header)
-    WarpWorld = WarpWCS.wcs_pix2world(*xy)
+    WarpWorld = WarpWCS.wcs_pix2world(*XY)
     WarpWorld += (0,)
     TemplateXY = TemplateWCS.wcs_world2pix(*WarpWorld)
 
     # Assemble mapping coordinates
-    src = np.c_[xy[0].flatten(),xy[1].flatten()]
+    src = np.c_[XY[0].flatten(),XY[1].flatten()]
     dst = np.c_[TemplateXY[0].flatten(),TemplateXY[1].flatten()]
 
     # Exectue Transform
@@ -57,4 +57,9 @@ def pyhastrom(WarpHDU, TemplateHDU, anchors = 5, order = 2):
     # Crop image to template size
     OutputImg = OutputImg[0:sizeTemplate[1],0:sizeTemplate[0]]
 
-    return(OutputImg)
+    TemplateHdr = TemplateWCS.to_header()
+    OutputHdr = WarpHDU.header.copy()
+    for keyword in TemplateHdr.keys():
+        OutputHdr[keyword] = TemplateHdr[keyword]
+    OutputHDU = fits.PrimaryHDU(data = OutputImg,header = OutputHdr)
+    return(OutputHDU)
